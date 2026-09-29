@@ -1,201 +1,540 @@
-
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ludo Voice</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ludo Voice</title>
 
-<style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-  font-family:Arial,sans-serif;
-}
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
 
-body{
-  min-height:100vh;
-  background:linear-gradient(145deg,#050812,#101d38,#070b15);
-  color:white;
-  padding:15px;
-}
+    body {
+      min-height: 100vh;
+      background: linear-gradient(145deg, #050812, #101d38, #070b15);
+      color: white;
+      padding: 16px;
+    }
 
-.app{
-  max-width:460px;
-  margin:auto;
-}
+    .app {
+      width: 100%;
+      max-width: 460px;
+      margin: 0 auto;
+    }
 
-.header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:8px 2px 18px;
-}
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 4px 20px;
+    }
 
-.logo{
-  font-size:24px;
-  font-weight:900;
-}
+    .logo {
+      font-size: 25px;
+      font-weight: 900;
+      letter-spacing: 1px;
+    }
 
-.logo span{
-  color:#ffd43b;
-}
+    .logo span {
+      color: #36b9ff;
+    }
 
-.online{
-  background:#123321;
-  color:#63ed99;
-  border:1px solid #28633f;
-  border-radius:20px;
-  padding:7px 10px;
-  font-size:11px;
-  font-weight:bold;
-}
+    .status {
+      background: #10233d;
+      border: 1px solid #24527d;
+      padding: 7px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+    }
 
-.hero{
-  background:linear-gradient(145deg,#192946,#10192b);
-  border:1px solid #304361;
-  border-radius:24px;
-  padding:23px;
-  box-shadow:0 15px 40px #0009;
-}
+    .hero {
+      background: linear-gradient(145deg, #102b4c, #101729);
+      border: 1px solid #23496d;
+      border-radius: 24px;
+      padding: 24px;
+      text-align: center;
+      box-shadow: 0 15px 40px rgba(0,0,0,.35);
+    }
 
-.hero h1{
-  font-size:38px;
-  line-height:1;
-  margin-bottom:12px;
-}
+    .dice {
+      font-size: 55px;
+      margin-bottom: 8px;
+    }
 
-.hero h1 span{
-  color:#ffd43b;
-}
+    h1 {
+      font-size: 34px;
+      margin-bottom: 8px;
+    }
 
-.hero p{
-  color:#aebbd0;
-  font-size:14px;
-  line-height:1.5;
-}
+    .subtitle {
+      color: #aebbd0;
+      font-size: 14px;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
 
-.badges{
-  display:flex;
-  flex-wrap:wrap;
-  gap:7px;
-  margin:17px 0;
-}
+    .badges {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
 
-.badge{
-  background:#22314c;
-  border:1px solid #354866;
-  padding:7px 10px;
-  border-radius:20px;
-  font-size:10px;
-}
+    .badge {
+      background: #08101e;
+      border: 1px solid #28547c;
+      border-radius: 20px;
+      padding: 7px 10px;
+      font-size: 12px;
+    }
 
-button{
-  width:100%;
-  border:0;
-  border-radius:14px;
-  padding:15px;
-  margin-top:9px;
-  font-size:15px;
-  font-weight:800;
-}
+    button {
+      width: 100%;
+      border: none;
+      border-radius: 15px;
+      padding: 15px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 10px;
+    }
 
-.primary{
-  background:#ffd43b;
-  color:#111;
-}
+    .primary {
+      background: linear-gradient(90deg, #1599ff, #4b5cff);
+      color: white;
+    }
 
-.secondary{
-  background:#263653;
-  color:white;
-}
+    .secondary {
+      background: #17243a;
+      color: white;
+      border: 1px solid #315274;
+    }
 
-.card{
-  background:#121e32;
-  border:1px solid #293b5a;
-  border-radius:18px;
-  padding:15px;
-  margin-top:13px;
-}
+    .features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 14px;
+    }
 
-.guard{
-  display:flex;
-  gap:12px;
-  align-items:center;
-}
+    .card {
+      background: #0d1627;
+      border: 1px solid #1d3554;
+      border-radius: 17px;
+      padding: 15px;
+    }
 
-.guardIcon{
-  width:46px;
-  height:46px;
-  border-radius:13px;
-  background:#183b2a;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  font-size:22px;
-}
+    .card .icon {
+      font-size: 25px;
+      margin-bottom: 7px;
+    }
 
-.small{
-  color:#9facbf;
-  font-size:12px;
-  line-height:1.4;
-  margin-top:4px;
-}
+    .card strong {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
 
-.hidden{
-  display:none;
-}
+    .card p {
+      color: #91a1b8;
+      font-size: 11px;
+      line-height: 1.4;
+    }
 
-.gameTop{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:12px;
-}
+    .hidden {
+      display: none;
+    }
 
-.room{
-  color:#aebbd0;
-  font-size:12px;
-}
+    .game-box {
+      background: #0d1627;
+      border: 1px solid #213b5d;
+      border-radius: 22px;
+      padding: 16px;
+    }
 
-.guardStatus{
-  background:#153526;
-  color:#6ceb9b;
-  padding:6px 9px;
-  border-radius:8px;
-  font-size:10px;
-  font-weight:bold;
-}
+    .game-title {
+      text-align: center;
+      font-size: 22px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
 
-.board{
-  width:100%;
-  aspect-ratio:1;
-  background:#e9e1d0;
-  border-radius:18px;
-  padding:8px;
-  display:grid;
-  grid-template-columns:repeat(11,1fr);
-  grid-template-rows:repeat(11,1fr);
-  gap:2px;
-}
+    .board {
+      width: 100%;
+      aspect-ratio: 1;
+      background: #f4f0df;
+      border: 5px solid #26364f;
+      border-radius: 14px;
+      display: grid;
+      grid-template-columns: repeat(11, 1fr);
+      grid-template-rows: repeat(11, 1fr);
+      overflow: hidden;
+    }
 
-.cell{
-  background:#d5ccb9;
-  border-radius:3px;
-}
+    .cell {
+      border: 1px solid #c5c0b2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+    }
 
-.path{
-  background:#fffaf0;
-}
+    .red {
+      background: #e85b5b;
+    }
 
-.red{
-  background:#e85b5b;
-}
+    .green {
+      background: #55ba75;
+    }
 
-.green{
-  background:#55ba7a;
-}
+    .yellow {
+      background: #e5bd48;
+    }
 
-.yellow{
-  background:#e5bd48
+    .blue {
+      background: #5b8de8;
+    }
+
+    .white {
+      background: white;
+    }
+
+    .voice {
+      margin-top: 15px;
+      background: #101d32;
+      border: 1px solid #254666;
+      border-radius: 17px;
+      padding: 15px;
+    }
+
+    .voice-title {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .players {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .player {
+      background: #17263d;
+      padding: 10px;
+      border-radius: 12px;
+      font-size: 12px;
+    }
+
+    .guard {
+      margin-top: 12px;
+      padding: 12px;
+      border-radius: 12px;
+      background: #0c3022;
+      border: 1px solid #23704f;
+      color: #7ff0b9;
+      font-size: 12px;
+    }
+
+    .dice-button {
+      background: linear-gradient(90deg, #ff9d24, #ff4e55);
+      color: white;
+      font-size: 20px;
+    }
+
+    .back {
+      background: transparent;
+      border: 1px solid #36506f;
+      color: #b7c6d9;
+    }
+
+    .footer {
+      text-align: center;
+      color: #687991;
+      font-size: 11px;
+      margin-top: 18px;
+      padding-bottom: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="app">
+
+    <header>
+      <div class="logo">🎲 LUDO <span>VOICE</span></div>
+      <div class="status">● ONLINE</div>
+    </header>
+
+    <section id="home">
+
+      <div class="hero">
+        <div class="dice">🎲</div>
+
+        <h1>LUDO VOICE</h1>
+
+        <p class="subtitle">
+          Play Ludo with friends, talk together and enjoy smart voice protection.
+        </p>
+
+        <div class="badges">
+          <div class="badge">👥 2–4 Players</div>
+          <div class="badge">🎙️ Voice Chat</div>
+          <div class="badge">🛡️ AI Guard</div>
+        </div>
+
+        <button class="primary" onclick="openGame()">
+          ⚡ QUICK MATCH
+        </button>
+
+        <button class="secondary" onclick="openGame()">
+          🔒 CREATE PRIVATE ROOM
+        </button>
+      </div>
+
+      <div class="features">
+
+        <div class="card">
+          <div class="icon">🎙️</div>
+          <strong>Voice Chat</strong>
+          <p>Talk with your friends while playing.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">🛡️</div>
+          <strong>AI Voice Guard</strong>
+          <p>Smart moderation for abusive voice behaviour.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">📶</div>
+          <strong>Low Data</strong>
+          <p>Designed with data usage in mind.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">🏆</div>
+          <strong>Competition</strong>
+          <p>Play with 2–4 players in one room.</p>
+        </div>
+
+      </div>
+
+    </section>
+
+    <section id="game" class="hidden">
+
+      <div class="game-box">
+
+        <div class="game-title">🏆 Ludo Voice Room</div>
+
+        <div class="board">
+
+          <div class="cell red">●</div>
+          <div class="cell red"></div>
+          <div class="cell red"></div>
+          <div class="cell white"></div>
+          <div class="cell white">▲</div>
+          <div class="cell white"></div>
+          <div class="cell white">▲</div>
+          <div class="cell white"></div>
+          <div class="cell green"></div>
+          <div class="cell green"></div>
+          <div class="cell green">●</div>
+
+          <div class="cell red"></div>
+          <div class="cell red">●</div>
+          <div class="cell red"></div>
+          <div class="cell white"></div>
+          <div class="cell green"></div>
+          <div class="cell green"></div>
+          <div class="cell green"></div>
+          <div class="cell white"></div>
+          <div class="cell green"></div>
+          <div class="cell green">●</div>
+          <div class="cell green"></div>
+
+          <div class="cell red"></div>
+          <div class="cell red"></div>
+          <div class="cell red">●</div>
+          <div class="cell white"></div>
+          <div class="cell green"></div>
+          <div class="cell green"></div>
+          <div class="cell green"></div>
+          <div class="cell white"></div>
+          <div class="cell green"></div>
+          <div class="cell green"></div>
+          <div class="cell green"></div>
+
+          <div class="cell white"></div>
+          <div class="cell white"></div>
+          <div class="cell white"></div>
+          <div class="cell white"></div>
+          <div class="cell white"></div>
+          <div class="cell white"></div>
+          <div class="cell white"></div>
+          <div class="cell white"></div>
+          <div class="cell white"></div>
+          <div class="cell white"></div>
+          <div class="cell white"></div>
+
+          <div class="cell blue"></div>
+          <div class="cell blue"></div>
+          <div class="cell blue"></div>
+          <div class="cell blue"></div>
+          <div class="cell white"></div>
+          <div class="cell yellow">★</div>
+          <div class="cell white"></div>
+          <div class="cell yellow"></div>
+          <div class="cell yellow"></div>
+          <div class="cell yellow"></div>
+          <div class="cell yellow"></div>
+
+          <div class="cell blue"></div>
+          <div class="cell blue"></div>
+          <div class="cell blue"></div>
+          <div class="cell blue"></div>
+          <div class="cell white"></div>
+          <div class="cell yellow"></div>
+          <div class="cell white"></div>
+          <div class="cell yellow"></div>
+          <div class="cell yellow"></div>
+          <div class="cell yellow"></div>
+          <div class="cell yellow"></div>
+
+          <div class="cell blue"></div>
+          <div class="cell blue"></div>
+          <div class="cell blue"></div>
+          <div class="cell blue"></div>
+          <div class="cell white"></div>
+          <div class="cell yellow"></div>
+          <div class="cell white"></div>
+          <div class="cell yellow"></div>
+          <div class="cell yellow"></div>
+          <div class="cell yellow"></div>
+          <div class="cell yellow"></div>
+
+          <div class="cell white"></div>
+          <div class="cell white"></div>
+          <div class="cell white"></div>
+          <div class="cell white"></div>
+          <div class="cell white"></div>
+          <div class="cell white"></div>
+          <div class="cell white"></div>
+          <div class="cell white"></div>
+          <div class="cell white"></div>
+          <div class="cell white"></div>
+          <div class="cell white"></div>
+
+          <div class="cell blue"></div>
+          <div class="cell blue"></div>
+          <div class="cell blue"></div>
+          <div class="cell blue"></div>
+          <div class="cell white"></div>
+          <div class="cell green"></div>
+          <div class="cell white"></div>
+          <div class="cell green"></div>
+          <div class="cell green"></div>
+          <div class="cell green"></div>
+          <div class="cell green"></div>
+
+          <div class="cell blue"></div>
+          <div class="cell blue">●</div>
+          <div class="cell blue"></div>
+          <div class="cell blue"></div>
+          <div class="cell white"></div>
+          <div class="cell green"></div>
+          <div class="cell white"></div>
+          <div class="cell green"></div>
+          <div class="cell green">●</div>
+          <div class="cell green"></div>
+          <div class="cell green"></div>
+
+          <div class="cell blue">●</div>
+          <div class="cell blue"></div>
+          <div class="cell blue"></div>
+          <div class="cell blue"></div>
+          <div class="cell white"></div>
+          <div class="cell white"></div>
+          <div class="cell white"></div>
+          <div class="cell yellow"></div>
+          <div class="cell yellow"></div>
+          <div class="cell yellow"></div>
+          <div class="cell yellow">●</div>
+
+        </div>
+
+        <button class="dice-button" onclick="rollDice()">
+          🎲 ROLL DICE
+        </button>
+
+        <div class="voice">
+
+          <div class="voice-title">
+            <span>🎙️ Voice Chat</span>
+            <span>4 Players</span>
+          </div>
+
+          <div class="players">
+            <div class="player">🟢 Player 1 — 🎙️</div>
+            <div class="player">🔴 Player 2 — 🎙️</div>
+            <div class="player">🟡 Player 3 — 🔇</div>
+            <div class="player">🔵 Player 4 — 🎙️</div>
+          </div>
+
+          <div class="guard">
+            🛡️ AI Voice Guard — ACTIVE
+          </div>
+
+        </div>
+
+        <button class="secondary" onclick="muteVoice()">
+          🎙️ MUTE MY VOICE
+        </button>
+
+        <button class="back" onclick="goHome()">
+          ← BACK TO HOME
+        </button>
+
+      </div>
+
+    </section>
+
+    <div class="footer">
+      LUDO VOICE • Front-End Prototype
+    </div>
+
+  </div>
+
+  <script>
+    function openGame() {
+      document.getElementById("home").classList.add("hidden");
+      document.getElementById("game").classList.remove("hidden");
+      window.scrollTo(0, 0);
+    }
+
+    function goHome() {
+      document.getElementById("game").classList.add("hidden");
+      document.getElementById("home").classList.remove("hidden");
+      window.scrollTo(0, 0);
+    }
+
+    function rollDice() {
+      var number = Math.floor(Math.random() * 6) + 1;
+      alert("You rolled: " + number);
+    }
+
+    function muteVoice() {
+      alert("Voice muted for this demo.");
+    }
+  </script>
+
+</body>
+</html>

@@ -171,39 +171,77 @@
       background: linear-gradient(135deg, #f7f3e8, #ffffff);
       border: 5px solid #26364f;
       border-radius: 14px;
-      display: grid;
-      grid-template-columns: repeat(11, 1fr);
-      grid-template-rows: repeat(11, 1fr);
+      display: block;
+      
       overflow: hidden;
     }
+.home {
+  position: absolute;
+  width: 36%;
+  height: 36%;
+  border: 4px solid #26364f;
+  border-radius: 18px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding: 18px;
+  align-items: center;
+  justify-items: center;
+} .center-ludo {
+  position: absolute;
+  width: 30%;
+  height: 30%;
+  left: 35%;
+  top: 35%;
+  background: white;
+  border: 4px solid #26364f;
+  border-radius: 12px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  justify-items: center;
+  font-size: 20px;}
+    
 
-    .cell {
-      border: 1px solid #c5c0b2;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 12px;
-    }
+.center-ludo strong {
+  position: absolute;
+  font-size: 28px;
+}
 
-    .red {
-      background: #e85b5b;
-    }
+.home span {
+  width: 38px;
+  height: 38px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
 
-    .green {
-      background: #55ba75;
-    }
+.red-home {
+  top: 0;
+  left: 0;
+  background: #e85b5b;
+}
 
-    .yellow {
-      background: #e5bd48;
-    }
+.green-home {
+  top: 0;
+  right: 0;
+  background: #55ba75;
+}
 
-    .blue {
-      background: #5b8de8;
-    }
+.blue-home {
+  bottom: 0;
+  left: 0;
+  background: #5b8de8;
+}
 
-    .white {
-      background: white;
-    }
+.yellow-home {
+  bottom: 0;
+  right: 0;
+  background: #e5bd48;
+}
 
     .voice {
       margin-top: 15px;
@@ -338,137 +376,33 @@
 
         <div class="board">
 
-          <div class="cell red">●</div>
-          <div class="cell red"></div>
-          <div class="cell red"></div>
-          <div class="cell white"></div>
-          <div class="cell white">▲</div>
-          <div class="cell white"></div>
-          <div class="cell white">▲</div>
-          <div class="cell white"></div>
-          <div class="cell green"></div>
-          <div class="cell green"></div>
-          <div class="cell green">●</div>
+          <div class="home red-home">
+  <span>🔴</span><span>🔴</span>
+  <span>🔴</span><span>🔴</span>
+</div>
 
-          <div class="cell red"></div>
-          <div class="cell red">●</div>
-          <div class="cell red"></div>
-          <div class="cell white"></div>
-          <div class="cell green"></div>
-          <div class="cell green"></div>
-          <div class="cell green"></div>
-          <div class="cell white"></div>
-          <div class="cell green"></div>
-          <div class="cell green">●</div>
-          <div class="cell green"></div>
+<div class="home green-home">
+  <span>🟢</span><span>🟢</span>
+  <span>🟢</span><span>🟢</span>
+</div>
 
-          <div class="cell red"></div>
-          <div class="cell red"></div>
-          <div class="cell red">●</div>
-          <div class="cell white"></div>
-          <div class="cell green"></div>
-          <div class="cell green"></div>
-          <div class="cell green"></div>
-          <div class="cell white"></div>
-          <div class="cell green"></div>
-          <div class="cell green"></div>
-          <div class="cell green"></div>
+<div class="home blue-home">
+  <span>🔵</span><span>🔵</span>
+  <span>🔵</span><span>🔵</span>
+</div>
 
-          <div class="cell white"></div>
-          <div class="cell white"></div>
-          <div class="cell white"></div>
-          <div class="cell white"></div>
-          <div class="cell white"></div>
-          <div class="cell white"></div>
-          <div class="cell white"></div>
-          <div class="cell white"></div>
-          <div class="cell white"></div>
-          <div class="cell white"></div>
-          <div class="cell white"></div>
+<div class="home yellow-home">
+  <span>🟡</span><span>🟡</span>
+  <span>🟡</span><span>🟡</span>
+</div>
 
-          <div class="cell blue"></div>
-          <div class="cell blue"></div>
-          <div class="cell blue"></div>
-          <div class="cell blue"></div>
-          <div class="cell white"></div>
-          <div class="cell yellow">★</div>
-          <div class="cell white"></div>
-          <div class="cell yellow"></div>
-          <div class="cell yellow"></div>
-          <div class="cell yellow"></div>
-          <div class="cell yellow"></div>
-
-          <div class="cell blue"></div>
-          <div class="cell blue"></div>
-          <div class="cell blue"></div>
-          <div class="cell blue"></div>
-          <div class="cell white"></div>
-          <div class="cell yellow"></div>
-          <div class="cell white"></div>
-          <div class="cell yellow"></div>
-          <div class="cell yellow"></div>
-          <div class="cell yellow"></div>
-          <div class="cell yellow"></div>
-
-          <div class="cell blue"></div>
-          <div class="cell blue"></div>
-          <div class="cell blue"></div>
-          <div class="cell blue"></div>
-          <div class="cell white"></div>
-          <div class="cell yellow"></div>
-          <div class="cell white"></div>
-          <div class="cell yellow"></div>
-          <div class="cell yellow"></div>
-          <div class="cell yellow"></div>
-          <div class="cell yellow"></div>
-
-          <div class="cell white"></div>
-          <div class="cell white"></div>
-          <div class="cell white"></div>
-          <div class="cell white"></div>
-          <div class="cell white"></div>
-          <div class="cell white"></div>
-          <div class="cell white"></div>
-          <div class="cell white"></div>
-          <div class="cell white"></div>
-          <div class="cell white"></div>
-          <div class="cell white"></div>
-
-          <div class="cell blue"></div>
-          <div class="cell blue"></div>
-          <div class="cell blue"></div>
-          <div class="cell blue"></div>
-          <div class="cell white"></div>
-          <div class="cell green"></div>
-          <div class="cell white"></div>
-          <div class="cell green"></div>
-          <div class="cell green"></div>
-          <div class="cell green"></div>
-          <div class="cell green"></div>
-
-          <div class="cell blue"></div>
-          <div class="cell blue">●</div>
-          <div class="cell blue"></div>
-          <div class="cell blue"></div>
-          <div class="cell white"></div>
-          <div class="cell green"></div>
-          <div class="cell white"></div>
-          <div class="cell green"></div>
-          <div class="cell green">●</div>
-          <div class="cell green"></div>
-          <div class="cell green"></div>
-
-          <div class="cell blue">●</div>
-          <div class="cell blue"></div>
-          <div class="cell blue"></div>
-          <div class="cell blue"></div>
-          <div class="cell white"></div>
-          <div class="cell white"></div>
-          <div class="cell white"></div>
-          <div class="cell yellow"></div>
-          <div class="cell yellow"></div>
-          <div class="cell yellow"></div>
-          <div class="cell yellow">●</div>
+<div class="center-ludo">
+  <div>🔴</div>
+  <div>🟢</div>
+  <div>🔵</div>
+  <div>🟡</div>
+  <strong>★</strong>
+</div>
 
         </div>
 

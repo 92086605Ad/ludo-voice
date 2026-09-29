@@ -749,9 +749,83 @@ function toggleVoice(){
   }else{
     status.textContent="ON";
     button.textContent="🔇 Mute Voice";
-  }
+  
+<script>
+let diceNumber = 0;
+let redMoved = false;
+
+function startGame(){
+  document.getElementById("game").style.display = "block";
+  document.getElementById("game").scrollIntoView({
+    behavior:"smooth"
+  });
 }
 
+function rollDice(){
+
+  diceNumber = Math.floor(Math.random() * 6) + 1;
+
+  const dice = document.getElementById("dice");
+
+  const faces = {
+    1:"⚀",
+    2:"⚁",
+    3:"⚂",
+    4:"⚃",
+    5:"⚄",
+    6:"⚅"
+  };
+
+  dice.textContent = faces[diceNumber];
+
+  moveRedToken(diceNumber);
+}
+
+function moveRedToken(number){
+
+  if(redMoved) return;
+
+  const token = document.querySelector(".red-token");
+
+  if(!token) return;
+
+  const board = document.querySelector(".board");
+
+  board.appendChild(token);
+
+  token.style.position = "absolute";
+  token.style.zIndex = "20";
+
+  const positions = [
+    [38,5],
+    [42,12],
+    [46,19],
+    [50,26],
+    [54,33],
+    [58,40]
+  ];
+
+  const pos = positions[number - 1];
+
+  token.style.left = pos[0] + "%";
+  token.style.top = pos[1] + "%";
+
+  redMoved = true;
+}
+
+function toggleVoice(){
+
+  const button = document.getElementById("voiceButton");
+  const status = document.getElementById("voiceStatus");
+
+  if(status.textContent === "ON"){
+    status.textContent = "OFF";
+    button.textContent = "🎙️ Unmute Voice";
+  }else{
+    status.textContent = "ON";
+    button.textContent = "🔇 Mute Voice";
+  }
+}
 </script>
 
 </body>

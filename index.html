@@ -1,495 +1,758 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ludo Voice</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LUDO VOICE</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
-
-    body {
-      min-height: 100vh;
-      background: linear-gradient(145deg, #050812, #101d38, #070b15);
-      color: white;
-      padding: 16px;
-    }
-
-    .app {
-      width: 100%;
-      max-width: 460px;
-      margin: 0 auto;
-    }
-
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 12px 4px 20px;
-    }
-
-    .logo {
-      font-size: 25px;
-      font-weight: 900;
-      letter-spacing: 1px;
-    }
-
-    .logo span {
-      color: #36b9ff;
-    }
-
-    .status {
-      background: #10233d;
-      border: 1px solid #24527d;
-      padding: 7px 10px;
-      border-radius: 20px;
-      font-size: 12px;
-    }
-
-    .hero {
-      background: linear-gradient(145deg, #102b4c, #101729);
-      border: 1px solid #23496d;
-      border-radius: 24px;
-      padding: 24px;
-      text-align: center;
-      box-shadow: 0 15px 40px rgba(0,0,0,.35);
-    }
-
-    .dice {
-      font-size: 55px;
-      margin-bottom: 8px;
-    }
-
-    h1 {
-      font-size: 34px;
-      margin-bottom: 8px;
-    }
-
-    .subtitle {
-      color: #aebbd0;
-      font-size: 14px;
-      line-height: 1.5;
-      margin-bottom: 20px;
-    }
-
-    .badges {
-      display: flex;
-      gap: 8px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-bottom: 20px;
-    }
-
-    .badge {
-      background: #08101e;
-      border: 1px solid #28547c;
-      border-radius: 20px;
-      padding: 7px 10px;
-      font-size: 12px;
-    }
-
-    button {
-      width: 100%;
-      border: none;
-      border-radius: 15px;
-      padding: 15px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      margin-top: 10px;
-    }
-
-    .primary {
-      background: linear-gradient(90deg, #1599ff, #4b5cff);
-      color: white;
-    }
-
-    .secondary {
-      background: #17243a;
-      color: white;
-      border: 1px solid #315274;
-    }
-
-    .features {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-top: 14px;
-    }
-
-    .card {
-      background: #0d1627;
-      border: 1px solid #1d3554;
-      border-radius: 17px;
-      padding: 15px;
-    }
-
-    .card .icon {
-      font-size: 25px;
-      margin-bottom: 7px;
-    }
-
-    .card strong {
-      display: block;
-      font-size: 14px;
-      margin-bottom: 5px;
-    }
-
-    .card p {
-      color: #91a1b8;
-      font-size: 11px;
-      line-height: 1.4;
-    }
-
-    .hidden {
-      display: none;
-    }
-
-    .game-box {
-      background: #0d1627;
-      border: 1px solid #213b5d;
-      border-radius: 22px;
-      padding: 16px;
-    }
-
-    .game-title {
-      text-align: center;
-      font-size: 22px;
-      font-weight: bold;
-      margin-bottom: 15px;
-    }
-
-    .board {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 1;
-      background: linear-gradient(135deg, #f7f3e8, #ffffff);
-      border: 5px solid #26364f;
-      border-radius: 14px;
-      display: block;
-      
-      overflow: hidden;
-    }
-.home {
-  position: absolute;
-  width: 36%;
-  height: 36%;
-  border: 4px solid #26364f;
-  border-radius: 18px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  padding: 18px;
-  align-items: center;
-  justify-items: center;
-} .center-ludo {
-  position: absolute;
-  width: 30%;
-  height: 30%;
-  left: 35%;
-  top: 35%;
-  background: white;
-  border: 4px solid #26364f;
-  border-radius: 12px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  justify-items: center;
-  font-size: 20px;}
-    
-
-.center-ludo strong {
-  position: absolute;
-  font-size: 28px;
-}
-.ludo-path {
-  position: absolute;
-  left: 32%;
-  top: 32%;
-  width: 36%;
-  height: 36%;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  gap: 2px;
-  background: #26364f;
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
 }
 
-.ludo-path div {
-  background: white;
-  border: 1px solid #c5c0b2;
-}
-.home span {
-  width: 38px;
-  height: 38px;
-  background: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 22px;
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#07111f;
+  color:#fff;
+  min-height:100vh;
 }
 
-.red-home {
-  top: 0;
-  left: 0;
-  background: #e85b5b;
+.header{
+  background:#0d1b2d;
+  border-bottom:1px solid #29425f;
+  padding:18px 20px;
+  text-align:center;
 }
 
-.green-home {
-  top: 0;
-  right: 0;
-  background: #55ba75;
+.logo{
+  font-size:28px;
+  font-weight:900;
+  color:#fff;
+  letter-spacing:1px;
 }
 
-.blue-home {
-  bottom: 0;
-  left: 0;
-  background: #5b8de8;
+.online{
+  display:inline-block;
+  margin-top:7px;
+  padding:5px 12px;
+  border-radius:20px;
+  background:#163c2b;
+  color:#5df59a;
+  font-size:12px;
+  font-weight:bold;
 }
 
-.yellow-home {
-  bottom: 0;
-  right: 0;
-  background: #e5bd48;
+.container{
+  width:min(1100px,94%);
+  margin:20px auto 40px;
 }
 
-    .voice {
-      margin-top: 15px;
-      background: #101d32;
-      border: 1px solid #254666;
-      border-radius: 17px;
-      padding: 15px;
-    }
+.intro{
+  text-align:center;
+  margin-bottom:20px;
+}
 
-    .voice-title {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 10px;
-      font-weight: bold;
-    }
+.intro h1{
+  font-size:25px;
+  margin-bottom:8px;
+}
 
-    .players {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-    }
+.intro p{
+  color:#aebdcd;
+  line-height:1.5;
+}
 
-    .player {
-      background: #17263d;
-      padding: 10px;
-      border-radius: 12px;
-      font-size: 12px;
-    }
+.badges{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:14px;
+}
 
-    .guard {
-      margin-top: 12px;
-      padding: 12px;
-      border-radius: 12px;
-      background: #0c3022;
-      border: 1px solid #23704f;
-      color: #7ff0b9;
-      font-size: 12px;
-    }
+.badge{
+  background:#122238;
+  border:1px solid #29445f;
+  padding:8px 12px;
+  border-radius:20px;
+  font-size:13px;
+}
 
-    .dice-button {
-      background: linear-gradient(90deg, #ff9d24, #ff4e55);
-      color: white;
-      font-size: 20px;
-    }
+.start-buttons{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:12px;
+  margin:22px 0;
+}
 
-    .back {
-      background: transparent;
-      border: 1px solid #36506f;
-      color: #b7c6d9;
-    }
+button{
+  border:0;
+  cursor:pointer;
+  color:#fff;
+  font-weight:bold;
+}
 
-    .footer {
-      text-align: center;
-      color: #687991;
-      font-size: 11px;
-      margin-top: 18px;
-      padding-bottom: 10px;
-    }
-  </style>
+.primary{
+  background:#e63946;
+  padding:13px 22px;
+  border-radius:12px;
+}
+
+.secondary{
+  background:#183451;
+  padding:13px 22px;
+  border-radius:12px;
+  border:1px solid #315577;
+}
+
+button:active{
+  transform:scale(.97);
+}
+
+.game{
+  display:none;
+}
+
+.game-layout{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 310px;
+  gap:20px;
+  align-items:start;
+}
+
+/* BOARD */
+.board-wrap{
+  background:#0d1b2d;
+  border:1px solid #29425f;
+  border-radius:18px;
+  padding:14px;
+}
+
+.board{
+  position:relative;
+  width:100%;
+  max-width:650px;
+  margin:auto;
+  aspect-ratio:1;
+  background:#fff;
+  border:5px solid #26364f;
+  border-radius:12px;
+  overflow:hidden;
+}
+
+/* FOUR HOME AREAS */
+.home{
+  position:absolute;
+  width:40%;
+  height:40%;
+  padding:5%;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8%;
+  align-items:center;
+  justify-items:center;
+  border:3px solid #26364f;
+}
+
+.red-home{
+  left:0;
+  top:0;
+  background:#e84c4c;
+}
+
+.green-home{
+  right:0;
+  top:0;
+  background:#45b96b;
+}
+
+.blue-home{
+  left:0;
+  bottom:0;
+  background:#4e82dc;
+}
+
+.yellow-home{
+  right:0;
+  bottom:0;
+  background:#e2bb42;
+}
+
+/* TOKENS */
+.token{
+  width:28px;
+  height:28px;
+  max-width:90%;
+  aspect-ratio:1;
+  border-radius:50%;
+  border:3px solid #fff;
+  box-shadow:0 2px 5px rgba(0,0,0,.35);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:11px;
+  color:#fff;
+  font-weight:bold;
+}
+
+.red-token{background:#c92727;}
+.green-token{background:#19964a;}
+.blue-token{background:#285dbd;}
+.yellow-token{background:#c59616;}
+
+/* PATH */
+.path{
+  position:absolute;
+  left:40%;
+  top:0;
+  width:20%;
+  height:100%;
+  display:grid;
+  grid-template-columns:1fr;
+  grid-template-rows:repeat(15,1fr);
+}
+
+.path.horizontal-left{
+  left:0;
+  top:40%;
+  width:40%;
+  height:20%;
+  grid-template-columns:repeat(6,1fr);
+  grid-template-rows:1fr;
+}
+
+.path.horizontal-right{
+  left:60%;
+  top:40%;
+  width:40%;
+  height:20%;
+  grid-template-columns:repeat(6,1fr);
+  grid-template-rows:1fr;
+}
+
+.path-cell{
+  background:#fff;
+  border:1px solid #9da7b2;
+}
+
+/* COLORED SAFE PATHS */
+.green-path{
+  background:#bdecc9;
+}
+
+.red-path{
+  background:#f7b5b5;
+}
+
+.blue-path{
+  background:#b8cff5;
+}
+
+.yellow-path{
+  background:#f4e3a3;
+}
+
+/* CENTER */
+.center{
+  position:absolute;
+  left:40%;
+  top:40%;
+  width:20%;
+  height:20%;
+  background:#fff;
+  border:3px solid #26364f;
+  overflow:hidden;
+}
+
+.center-red{
+  position:absolute;
+  left:0;
+  top:0;
+  width:50%;
+  height:50%;
+  background:#e84c4c;
+  clip-path:polygon(0 0,100% 0,0 100%);
+}
+
+.center-green{
+  position:absolute;
+  right:0;
+  top:0;
+  width:50%;
+  height:50%;
+  background:#45b96b;
+  clip-path:polygon(0 0,100% 0,100% 100%);
+}
+
+.center-blue{
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:50%;
+  height:50%;
+  background:#4e82dc;
+  clip-path:polygon(0 0,0 100%,100% 100%);
+}
+
+.center-yellow{
+  position:absolute;
+  right:0;
+  bottom:0;
+  width:50%;
+  height:50%;
+  background:#e2bb42;
+  clip-path:polygon(100% 0,100% 100%,0 100%);
+}
+
+/* SIDE PANEL */
+.panel{
+  background:#0d1b2d;
+  border:1px solid #29425f;
+  border-radius:18px;
+  padding:18px;
+}
+
+.panel h2{
+  font-size:20px;
+  margin-bottom:15px;
+}
+
+.players{
+  display:grid;
+  gap:9px;
+}
+
+.player{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  background:#122238;
+  border:1px solid #29445f;
+  border-radius:12px;
+  padding:10px;
+}
+
+.player-dot{
+  width:18px;
+  height:18px;
+  border-radius:50%;
+}
+
+.p-red{background:#e84c4c;}
+.p-green{background:#45b96b;}
+.p-blue{background:#4e82dc;}
+.p-yellow{background:#e2bb42;}
+
+.player-name{
+  flex:1;
+  font-weight:bold;
+}
+
+.player-status{
+  color:#9db0c4;
+  font-size:12px;
+}
+
+.dice-box{
+  margin-top:16px;
+  background:#122238;
+  border:1px solid #29445f;
+  border-radius:14px;
+  padding:15px;
+  text-align:center;
+}
+
+.dice{
+  font-size:55px;
+  margin:8px 0 12px;
+}
+
+.roll{
+  width:100%;
+  background:#e63946;
+  padding:13px;
+  border-radius:10px;
+}
+
+.voice{
+  margin-top:16px;
+  background:#122238;
+  border:1px solid #29445f;
+  border-radius:14px;
+  padding:15px;
+}
+
+.voice-title{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:12px;
+}
+
+.voice button{
+  width:100%;
+  background:#183451;
+  border:1px solid #315577;
+  padding:11px;
+  border-radius:9px;
+}
+
+.features{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  margin-top:20px;
+}
+
+.feature{
+  background:#0d1b2d;
+  border:1px solid #29425f;
+  border-radius:14px;
+  padding:15px;
+}
+
+.feature h3{
+  margin-bottom:7px;
+  font-size:16px;
+}
+
+.feature p{
+  color:#9fb0c1;
+  font-size:13px;
+  line-height:1.45;
+}
+
+.footer{
+  text-align:center;
+  color:#718398;
+  font-size:12px;
+  margin-top:25px;
+  padding-bottom:20px;
+}
+
+/* MOBILE */
+@media(max-width:800px){
+  .game-layout{
+    grid-template-columns:1fr;
+  }
+
+  .panel{
+    order:2;
+  }
+
+  .features{
+    grid-template-columns:1fr 1fr;
+  }
+}
+
+@media(max-width:480px){
+  .container{
+    width:95%;
+  }
+
+  .logo{
+    font-size:24px;
+  }
+
+  .intro h1{
+    font-size:21px;
+  }
+
+  .board-wrap{
+    padding:8px;
+  }
+
+  .board{
+    border-width:3px;
+  }
+
+  .token{
+    width:22px;
+    height:22px;
+    border-width:2px;
+    font-size:8px;
+  }
+
+  .features{
+    grid-template-columns:1fr;
+  }
+
+  .start-buttons{
+    flex-direction:column;
+  }
+
+  .start-buttons button{
+    width:100%;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <div class="app">
+<header class="header">
+  <div class="logo">🎙️ LUDO VOICE</div>
+  <div class="online">● ONLINE</div>
+</header>
 
-    <header>
-      <div class="logo">🎲 LUDO <span>VOICE</span></div>
-      <div class="status">● ONLINE</div>
-    </header>
+<main class="container">
 
-    <section id="home">
+<section class="intro">
+  <h1>Play Ludo. Talk Together. Have Fun.</h1>
+  <p>Online Ludo with voice chat and smart voice protection.</p>
 
-      <div class="hero">
-        <div class="dice">🎲</div>
+  <div class="badges">
+    <span class="badge">👥 2–4 Players</span>
+    <span class="badge">🎙️ Voice Chat</span>
+    <span class="badge">🛡️ AI Guard</span>
+    <span class="badge">📶 Low Data</span>
+  </div>
+</section>
 
-        <h1>LUDO VOICE</h1>
-
-        <p class="subtitle">
-          Play Ludo with friends, talk together and enjoy smart voice protection.
-        </p>
-
-        <div class="badges">
-          <div class="badge">👥 2–4 Players</div>
-          <div class="badge">🎙️ Voice Chat</div>
-          <div class="badge">🛡️ AI Guard</div>
-        </div>
-
-        <button class="primary" onclick="openGame()">
-          ⚡ QUICK MATCH
-        </button>
-
-        <button class="secondary" onclick="openGame()">
-          🔒 CREATE PRIVATE ROOM
-        </button>
-      </div>
-
-      <div class="features">
-
-        <div class="card">
-          <div class="icon">🎙️</div>
-          <strong>Voice Chat</strong>
-          <p>Talk with your friends while playing.</p>
-        </div>
-
-        <div class="card">
-          <div class="icon">🛡️</div>
-          <strong>AI Voice Guard</strong>
-          <p>Smart moderation for abusive voice behaviour.</p>
-        </div>
-
-        <div class="card">
-          <div class="icon">📶</div>
-          <strong>Low Data</strong>
-          <p>Designed with data usage in mind.</p>
-        </div>
-
-        <div class="card">
-          <div class="icon">🏆</div>
-          <strong>Competition</strong>
-          <p>Play with 2–4 players in one room.</p>
-        </div>
-
-      </div>
-
-    </section>
-
-    <section id="game" class="hidden">
-
-      <div class="game-box">
-
-        <div class="game-title">🏆 Ludo Voice Room</div>
-
-        <div class="board">
-
-          <div class="home red-home">
-  <span>🔴</span><span>🔴</span>
-  <span>🔴</span><span>🔴</span>
+<div class="start-buttons">
+  <button class="primary" onclick="startGame()">Quick Match</button>
+  <button class="secondary" onclick="startGame()">Create Private Room</button>
 </div>
 
+<section id="game" class="game">
+
+<div class="game-layout">
+
+<!-- BOARD -->
+<div class="board-wrap">
+
+<div class="board">
+
+<!-- RED HOME -->
+<div class="home red-home">
+  <div class="token red-token">1</div>
+  <div class="token red-token">2</div>
+  <div class="token red-token">3</div>
+  <div class="token red-token">4</div>
+</div>
+
+<!-- GREEN HOME -->
 <div class="home green-home">
-  <span>🟢</span><span>🟢</span>
-  <span>🟢</span><span>🟢</span>
+  <div class="token green-token">1</div>
+  <div class="token green-token">2</div>
+  <div class="token green-token">3</div>
+  <div class="token green-token">4</div>
 </div>
 
+<!-- BLUE HOME -->
 <div class="home blue-home">
-  <span>🔵</span><span>🔵</span>
-  <span>🔵</span><span>🔵</span>
+  <div class="token blue-token">1</div>
+  <div class="token blue-token">2</div>
+  <div class="token blue-token">3</div>
+  <div class="token blue-token">4</div>
 </div>
 
+<!-- YELLOW HOME -->
 <div class="home yellow-home">
-  <span>🟡</span><span>🟡</span>
-  <span>🟡</span><span>🟡</span>
-</div>
-<div class="ludo-path">
-  <div></div><div></div><div></div><div></div><div></div>
-  <div></div><div></div><div></div><div></div><div></div>
-  <div></div><div></div><div></div><div></div><div></div>
-
-<div class="center-ludo">
-  <div>🔴</div>
-  <div>🟢</div>
-  <div>🔵</div>
-  <div>🟡</div>
-  <strong>★</strong>
+  <div class="token yellow-token">1</div>
+  <div class="token yellow-token">2</div>
+  <div class="token yellow-token">3</div>
+  <div class="token yellow-token">4</div>
 </div>
 
-        </div>
+<!-- TOP PATH -->
+<div class="path">
+  <div class="path-cell red-path"></div>
+  <div class="path-cell"></div>
+  <div class="path-cell"></div>
+  <div class="path-cell green-path"></div>
+  <div class="path-cell"></div>
+  <div class="path-cell"></div>
+  <div class="path-cell green-path"></div>
+  <div class="path-cell"></div>
+  <div class="path-cell"></div>
+  <div class="path-cell"></div>
+  <div class="path-cell"></div>
+  <div class="path-cell"></div>
+  <div class="path-cell"></div>
+  <div class="path-cell"></div>
+  <div class="path-cell"></div>
+</div>
 
-        <button class="dice-button" onclick="rollDice()">
-          🎲 ROLL DICE
-        </button>
+<!-- LEFT PATH -->
+<div class="path horizontal-left">
+  <div class="path-cell"></div>
+  <div class="path-cell red-path"></div>
+  <div class="path-cell"></div>
+  <div class="path-cell"></div>
+  <div class="path-cell"></div>
+  <div class="path-cell"></div>
+</div>
 
-        <div class="voice">
+<!-- RIGHT PATH -->
+<div class="path horizontal-right">
+  <div class="path-cell"></div>
+  <div class="path-cell"></div>
+  <div class="path-cell"></div>
+  <div class="path-cell"></div>
+  <div class="path-cell green-path"></div>
+  <div class="path-cell"></div>
+</div>
 
-          <div class="voice-title">
-            <span>🎙️ Voice Chat</span>
-            <span>4 Players</span>
-          </div>
+<!-- BOTTOM PATH -->
+<div class="path" style="top:60%;">
+  <div class="path-cell"></div>
+  <div class="path-cell"></div>
+  <div class="path-cell"></div>
+  <div class="path-cell blue-path"></div>
+  <div class="path-cell"></div>
+  <div class="path-cell"></div>
+  <div class="path-cell blue-path"></div>
+  <div class="path-cell"></div>
+  <div class="path-cell"></div>
+  <div class="path-cell"></div>
+  <div class="path-cell"></div>
+  <div class="path-cell"></div>
+  <div class="path-cell"></div>
+  <div class="path-cell"></div>
+  <div class="path-cell yellow-path"></div>
+</div>
 
-          <div class="players">
-            <div class="player">🟢 Player 1 — 🎙️</div>
-            <div class="player">🔴 Player 2 — 🎙️</div>
-            <div class="player">🟡 Player 3 — 🔇</div>
-            <div class="player">🔵 Player 4 — 🎙️</div>
-          </div>
+<!-- CENTER -->
+<div class="center">
+  <div class="center-red"></div>
+  <div class="center-green"></div>
+  <div class="center-blue"></div>
+  <div class="center-yellow"></div>
+</div>
 
-          <div class="guard">
-            🛡️ AI Voice Guard — ACTIVE
-          </div>
+</div>
+</div>
 
-        </div>
+<!-- SIDE PANEL -->
+<aside class="panel">
 
-        <button class="secondary" onclick="muteVoice()">
-          🎙️ MUTE MY VOICE
-        </button>
+<h2>🎮 Game Room</h2>
 
-        <button class="back" onclick="goHome()">
-          ← BACK TO HOME
-        </button>
+<div class="players">
 
-      </div>
+<div class="player">
+  <span class="player-dot p-red"></span>
+  <span class="player-name">Player 1</span>
+  <span class="player-status">You</span>
+</div>
 
-    </section>
+<div class="player">
+  <span class="player-dot p-green"></span>
+  <span class="player-name">Player 2</span>
+  <span class="player-status">Ready</span>
+</div>
 
-    <div class="footer">
-      LUDO VOICE • Front-End Prototype
-    </div>
+<div class="player">
+  <span class="player-dot p-blue"></span>
+  <span class="player-name">Player 3</span>
+  <span class="player-status">Ready</span>
+</div>
 
+<div class="player">
+  <span class="player-dot p-yellow"></span>
+  <span class="player-name">Player 4</span>
+  <span class="player-status">Ready</span>
+</div>
+
+</div>
+
+<div class="dice-box">
+  <div>YOUR DICE</div>
+  <div id="dice" class="dice">🎲</div>
+  <button class="roll" onclick="rollDice()">ROLL DICE</button>
+</div>
+
+<div class="voice">
+  <div class="voice-title">
+    <span>🎙️ Voice Chat</span>
+    <span id="voiceStatus">ON</span>
   </div>
 
-  <script>
-    function openGame() {
-      document.getElementById("home").classList.add("hidden");
-      document.getElementById("game").classList.remove("hidden");
-      window.scrollTo(0, 0);
-    }
+  <button onclick="toggleVoice()" id="voiceButton">
+    🔇 Mute Voice
+  </button>
+</div>
 
-    function goHome() {
-      document.getElementById("game").classList.add("hidden");
-      document.getElementById("home").classList.remove("hidden");
-      window.scrollTo(0, 0);
-    }
+</aside>
 
-    function rollDice() {
-      var number = Math.floor(Math.random() * 6) + 1;
-      alert("You rolled: " + number);
-    }
+</div>
 
-    function muteVoice() {
-      alert("Voice muted for this demo.");
-    }
-  </script>
+<div class="features">
+
+<div class="feature">
+  <h3>🎙️ Voice Chat</h3>
+  <p>Talk with your friends while playing.</p>
+</div>
+
+<div class="feature">
+  <h3>🛡️ AI Voice Guard</h3>
+  <p>Smart protection for abusive voice chat.</p>
+</div>
+
+<div class="feature">
+  <h3>📶 Low Data</h3>
+  <p>Designed to use less mobile data.</p>
+</div>
+
+<div class="feature">
+  <h3>🏆 Competition</h3>
+  <p>Play with friends and enjoy the match.</p>
+</div>
+
+</div>
+
+</section>
+
+<footer class="footer">
+  LUDO VOICE • Front-End Prototype
+</footer>
+
+</main>
+
+<script>
+
+function startGame(){
+  document.getElementById("game").style.display="block";
+  document.getElementById("game").scrollIntoView({
+    behavior:"smooth"
+  });
+}
+
+function rollDice(){
+  const number=Math.floor(Math.random()*6)+1;
+
+  const dice=document.getElementById("dice");
+
+  const faces={
+    1:"⚀",
+    2:"⚁",
+    3:"⚂",
+    4:"⚃",
+    5:"⚄",
+    6:"⚅"
+  };
+
+  dice.textContent=faces[number];
+}
+
+function toggleVoice(){
+
+  const button=document.getElementById("voiceButton");
+  const status=document.getElementById("voiceStatus");
+
+  if(status.textContent==="ON"){
+    status.textContent="OFF";
+    button.textContent="🎙️ Unmute Voice";
+  }else{
+    status.textContent="ON";
+    button.textContent="🔇 Mute Voice";
+  }
+}
+
+</script>
 
 </body>
 </html>
